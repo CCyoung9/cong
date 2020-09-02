@@ -1,0 +1,1084 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://ws.livebos.apex.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="LBEBusinessWebService" targetNamespace="http://ws.livebos.apex.com/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ws.livebos.apex.com/" elementFormDefault="unqualified" targetNamespace="http://ws.livebos.apex.com/" version="1.0">
+<xs:element name="callBizFunction" type="tns:callBizFunction"/>
+<xs:element name="callBizFunctionResponse" type="tns:callBizFunctionResponse"/>
+<xs:element name="claimWorkflow" type="tns:claimWorkflow"/>
+<xs:element name="claimWorkflowResponse" type="tns:claimWorkflowResponse"/>
+<xs:element name="create" type="tns:create"/>
+<xs:element name="createResponse" type="tns:createResponse"/>
+<xs:element name="delete" type="tns:delete"/>
+<xs:element name="deleteResponse" type="tns:deleteResponse"/>
+<xs:element name="doWorkAction" type="tns:doWorkAction"/>
+<xs:element name="doWorkActionByObject" type="tns:doWorkActionByObject"/>
+<xs:element name="doWorkActionByObjectResponse" type="tns:doWorkActionByObjectResponse"/>
+<xs:element name="doWorkActionResponse" type="tns:doWorkActionResponse"/>
+<xs:element name="execBizProcess" type="tns:execBizProcess"/>
+<xs:element name="execBizProcessResponse" type="tns:execBizProcessResponse"/>
+<xs:element name="execBizService" type="tns:execBizService"/>
+<xs:element name="execBizServiceResponse" type="tns:execBizServiceResponse"/>
+<xs:element name="getNotice" type="tns:getNotice"/>
+<xs:element name="getNoticeResponse" type="tns:getNoticeResponse"/>
+<xs:element name="getUserInfo" type="tns:getUserInfo"/>
+<xs:element name="getUserInfoResponse" type="tns:getUserInfoResponse"/>
+<xs:element name="getWorkAvailableAction" type="tns:getWorkAvailableAction"/>
+<xs:element name="getWorkAvailableActionResponse" type="tns:getWorkAvailableActionResponse"/>
+<xs:element name="getWorkOwner" type="tns:getWorkOwner"/>
+<xs:element name="getWorkOwnerResponse" type="tns:getWorkOwnerResponse"/>
+<xs:element name="killWorkflow" type="tns:killWorkflow"/>
+<xs:element name="killWorkflowResponse" type="tns:killWorkflowResponse"/>
+<xs:element name="lbRecord" type="tns:lbRecord"/>
+<xs:element name="login" type="tns:login"/>
+<xs:element name="loginResponse" type="tns:loginResponse"/>
+<xs:element name="logout" type="tns:logout"/>
+<xs:element name="logoutResponse" type="tns:logoutResponse"/>
+<xs:element name="query" type="tns:query"/>
+<xs:element name="queryResponse" type="tns:queryResponse"/>
+<xs:element name="queryTaskListByCondition" type="tns:queryTaskListByCondition"/>
+<xs:element name="queryTaskListByConditionResponse" type="tns:queryTaskListByConditionResponse"/>
+<xs:element name="queryTasks" type="tns:queryTasks"/>
+<xs:element name="queryTasksResponse" type="tns:queryTasksResponse"/>
+<xs:element name="queryWorkStepDetail" type="tns:queryWorkStepDetail"/>
+<xs:element name="queryWorkStepDetailResponse" type="tns:queryWorkStepDetailResponse"/>
+<xs:element name="queryWorkflowDescribe" type="tns:queryWorkflowDescribe"/>
+<xs:element name="queryWorkflowDescribeResponse" type="tns:queryWorkflowDescribeResponse"/>
+<xs:element name="update" type="tns:update"/>
+<xs:element name="updateResponse" type="tns:updateResponse"/>
+<xs:element name="validateSessionId" type="tns:validateSessionId"/>
+<xs:element name="validateSessionIdResponse" type="tns:validateSessionIdResponse"/>
+<xs:element name="validateUser" type="tns:validateUser"/>
+<xs:element name="validateUserResponse" type="tns:validateUserResponse"/>
+<xs:complexType name="getNotice">
+<xs:sequence>
+<xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+<xs:element minOccurs="0" name="user" type="xs:string"/>
+<xs:element name="type" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getNoticeResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="NoticeResult" type="tns:noticeResult"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="noticeResult">
+<xs:complexContent>
+<xs:extension base="tns:lbeResult">
+<xs:sequence>
+<xs:element name="workflowCount" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="lbeResult">
+<xs:sequence>
+<xs:element minOccurs="0" name="message" type="xs:string"/>
+<xs:element name="result" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="queryTasks">
+<xs:sequence>
+<xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+<xs:element minOccurs="0" name="caller" type="xs:string"/>
+<xs:element minOccurs="0" name="queryOption" type="tns:queryOption"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="queryOption">
+<xs:sequence>
+<xs:element name="batchNo" type="xs:int"/>
+<xs:element name="batchSize" type="xs:int"/>
+<xs:element minOccurs="0" name="orderBy" type="xs:string"/>
+<xs:element name="queryCount" type="xs:boolean"/>
+<xs:element minOccurs="0" name="queryId" type="xs:string"/>
+<xs:element minOccurs="0" name="valueOption" type="tns:valueOption"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="queryTasksResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="QueryResult" type="tns:queryResult"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="queryResult">
+<xs:complexContent>
+<xs:extension base="tns:lbeResult">
+<xs:sequence>
+<xs:element name="count" type="xs:int"/>
+<xs:element name="hasMore" type="xs:boolean"/>
+<xs:element minOccurs="0" name="metaData" type="tns:lbMetaData"/>
+<xs:element minOccurs="0" name="queryId" type="xs:string"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="records" nillable="true" type="tns:lbRecord"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="lbMetaData">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="colInfo" nillable="true" type="tns:colInfo"/>
+<xs:element name="columnCount" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="colInfo">
+<xs:sequence>
+<xs:element minOccurs="0" name="label" type="xs:string"/>
+<xs:element name="length" type="xs:int"/>
+<xs:element minOccurs="0" name="name" type="xs:string"/>
+<xs:element name="scale" type="xs:int"/>
+<xs:element name="type" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="lbRecord">
+<xs:sequence>
+<xs:element name="size" type="xs:int"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="values" type="xs:anyType"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="strings" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="logout">
+<xs:sequence>
+<xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="logoutResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="LogoutResult" type="tns:logoutResult"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="logoutResult">
+<xs:complexContent>
+<xs:extension base="tns:lbeResult">
+<xs:sequence/>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="validateUser">
+<xs:sequence>
+<xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+<xs:element minOccurs="0" name="userId" type="xs:string"/>
+<xs:element minOccurs="0" name="password" type="xs:string"/>
+<xs:element minOccurs="0" name="algorithm" type="xs:string"/>
+<xs:element minOccurs="0" name="securityCode" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="validateUserResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="UserInfo" type="tns:queryResult"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="callBizFunction">
+<xs:sequence>
+<xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+<xs:element minOccurs="0" name="bizFunctionName" type="xs:string"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="params" type="tns:lbParameter"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="lbParameter">
+<xs:sequence>
+<xs:element minOccurs="0" name="name" type="xs:string"/>
+<xs:element minOccurs="0" name="value" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="callBizFunctionResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="BizFunctionResult" type="tns:bizFunctionResult"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="bizFunctionResult">
+<xs:complexContent>
+<xs:extension base="tns:lbeResult">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="outputVariables" nillable="true" type="tns:lbParameter"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="queryTaskListByCondition">
+<xs:sequence>
+<xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+<xs:element minOccurs="0" name="caller" type="xs:string"/>
+<xs:element minOccurs="0" name="condition" type="tns:workCondition"/>
+<xs:element minOccurs="0" name="queryOption" type="tns:queryOption"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="workCondition">
+<xs:sequence>
+<xs:element minOccurs="0" name="beginTime" type="xs:string"/>
+<xs:element minOccurs="0" name="dateRange" type="xs:string"/>
+<xs:element minOccurs="0" name="endTime" type="xs:string"/>
+<xs:element name="incEntrust" type="xs:boolean"/>
+<xs:element name="status" type="xs:int"/>
+<xs:element minOccurs="0" name="subject" type="xs:string"/>
+<xs:element minOccurs="0" name="type" type="xs:string"/>
+<xs:element minOccurs="0" name="workName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="queryTaskListByConditionResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="QueryResult" type="tns:queryResult"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="queryWorkStepDetail">
+<xs:sequence>
+<xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+<xs:element name="instanceId" type="xs:long"/>
+<xs:element minOccurs="0" name="queryOption" type="tns:queryOption"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="queryWorkStepDetailResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="WorkStepDetail" type="tns:queryResult"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="queryWorkflowDescribe">
+<xs:sequence>
+<xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+<xs:element minOccurs="0" name="uid" type="xs:string"/>
+<xs:element name="startupOnly" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="queryWorkflowDescribeResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="WorkflowDescirbe" type="tns:workflowDescribeResponse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="workflowDescribeResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="workflowDescribes" nillable="true" type="tns:workflowProfile"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="workflowProfile">
+<xs:sequence>
+<xs:element name="attribute" type="xs:int"/>
+<xs:element minOccurs="0" name="category" type="xs:string"/>
+<xs:element minOccurs="0" name="describe" type="xs:string"/>
+<xs:element minOccurs="0" name="i18NCategory" type="tns:i18NString"/>
+<xs:element minOccurs="0" name="i18NDescribe" type="tns:i18NString"/>
+<xs:element minOccurs="0" name="name" type="xs:string"/>
+<xs:element name="type" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="i18NString">
+<xs:sequence/>
+</xs:complexType>
+<xs:complexType name="i18NStringItem">
+<xs:sequence>
+<xs:element minOccurs="0" name="lang" type="xs:string"/>
+<xs:element minOccurs="0" name="string" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="doWorkAction">
+<xs:sequence>
+<xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+<xs:element minOccurs="0" name="workflowName" type="xs:string"/>
+<xs:element name="instanceId" type="xs:long"/>
+<xs:element name="actionId" type="xs:int"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="params" type="tns:lbParameter"/>
+<xs:element minOccurs="0" name="caller" type="xs:string"/>
+<xs:element minOccurs="0" name="summary" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="doWorkActionResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="WorkActionResult" type="tns:workActionResult"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="workActionResult">
+<xs:complexContent>
+<xs:extension base="tns:lbeResult">
+<xs:sequence>
+<xs:element name="instanceId" type="xs:long"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="create">
+<xs:sequence>
+<xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+<xs:element minOccurs="0" name="objectName" type="xs:string"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="params" type="tns:lbParameter"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="CreateResult" type="tns:createResult"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createResult">
+<xs:complexContent>
+<xs:extension base="tns:lbeResult">
+<xs:sequence>
+<xs:element minOccurs="0" name="id" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="getUserInfo">
+<xs:sequence>
+<xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+<xs:element minOccurs="0" name="loginId" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getUserInfoResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="UserInfo" type="tns:userInfo"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="userInfo">
+<xs:sequence>
+<xs:element name="grade" type="xs:int"/>
+<xs:element name="id" type="xs:long"/>
+<xs:element minOccurs="0" name="lastLogin" type="xs:string"/>
+<xs:element minOccurs="0" name="loginId" type="xs:string"/>
+<xs:element minOccurs="0" name="name" type="xs:string"/>
+<xs:element name="orgId" type="xs:long"/>
+<xs:element name="status" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getWorkOwner">
+<xs:sequence>
+<xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+<xs:element name="instanceId" type="xs:long"/>
+<xs:element name="stepId" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getWorkOwnerResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="WorkOwnerResponse" type="tns:workOwnerResponse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="workOwnerResponse">
+<xs:complexContent>
+<xs:extension base="tns:lbeResult">
+<xs:sequence>
+<xs:element name="approveMode" type="xs:int"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="owners" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="doWorkActionByObject">
+<xs:sequence>
+<xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+<xs:element minOccurs="0" name="objectName" type="xs:string"/>
+<xs:element minOccurs="0" name="id" type="xs:string"/>
+<xs:element name="actionId" type="xs:int"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="params" type="tns:lbParameter"/>
+<xs:element minOccurs="0" name="caller" type="xs:string"/>
+<xs:element minOccurs="0" name="summary" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="doWorkActionByObjectResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="WorkActionResult" type="tns:workActionResult"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="killWorkflow">
+<xs:sequence>
+<xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+<xs:element minOccurs="0" name="workflowName" type="xs:string"/>
+<xs:element minOccurs="0" name="caller" type="xs:string"/>
+<xs:element name="instanceId" type="xs:long"/>
+<xs:element minOccurs="0" name="reason" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="killWorkflowResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="LBEResult" type="tns:lbeResult"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="validateSessionId">
+<xs:sequence>
+<xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="validateSessionIdResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="LBEResult" type="tns:lbeResult"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="execBizProcess">
+<xs:sequence>
+<xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+<xs:element minOccurs="0" name="bizProcessName" type="xs:string"/>
+<xs:element minOccurs="0" name="id" type="xs:string"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="params" type="tns:lbParameter"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="variables" type="tns:lbParameter"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="execBizProcessResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="BizProcessResult" type="tns:bizProcessResult"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="bizProcessResult">
+<xs:complexContent>
+<xs:extension base="tns:lbeResult">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="outputVariables" nillable="true" type="tns:lbParameter"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="claimWorkflow">
+<xs:sequence>
+<xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+<xs:element minOccurs="0" name="workflowName" type="xs:string"/>
+<xs:element minOccurs="0" name="caller" type="xs:string"/>
+<xs:element name="instanceId" type="xs:long"/>
+<xs:element name="toClaim" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="claimWorkflowResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="LBEResult" type="tns:lbeResult"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getWorkAvailableAction">
+<xs:sequence>
+<xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+<xs:element name="instanceId" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getWorkAvailableActionResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="AvailableWorkActionResponse" type="tns:availableWorkActionResponse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="availableWorkActionResponse">
+<xs:complexContent>
+<xs:extension base="tns:lbeResult">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="actions" nillable="true" type="tns:workAction"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="workAction">
+<xs:sequence>
+<xs:element name="actionId" type="xs:int"/>
+<xs:element minOccurs="0" name="actionName" type="xs:string"/>
+<xs:element name="stepId" type="xs:int"/>
+<xs:element minOccurs="0" name="stepName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="query">
+<xs:sequence>
+<xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+<xs:element minOccurs="0" name="objectName" type="xs:string"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="params" type="tns:lbParameter"/>
+<xs:element minOccurs="0" name="condition" type="xs:string"/>
+<xs:element minOccurs="0" name="queryOption" type="tns:queryOption"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="queryResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="QueryResult" type="tns:queryResult"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="update">
+<xs:sequence>
+<xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+<xs:element minOccurs="0" name="objectName" type="xs:string"/>
+<xs:element minOccurs="0" name="id" type="xs:string"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="params" type="tns:lbParameter"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="LBEResult" type="tns:lbeResult"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="execBizService">
+<xs:sequence>
+<xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+<xs:element minOccurs="0" name="bizServiceName" type="xs:string"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="variables" type="tns:lbParameter"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="execBizServiceResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="BizServiceResult" type="tns:bizProcessResult"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="login">
+<xs:sequence>
+<xs:element minOccurs="0" name="userid" type="xs:string"/>
+<xs:element minOccurs="0" name="password" type="xs:string"/>
+<xs:element minOccurs="0" name="scheme" type="xs:string"/>
+<xs:element minOccurs="0" name="algorithm" type="xs:string"/>
+<xs:element minOccurs="0" name="securityCode" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="loginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="LoginResult" type="tns:loginResult"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="loginResult">
+<xs:complexContent>
+<xs:extension base="tns:lbeResult">
+<xs:sequence>
+<xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="delete">
+<xs:sequence>
+<xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+<xs:element minOccurs="0" name="objectName" type="xs:string"/>
+<xs:element minOccurs="0" name="id" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="deleteResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="LBEResult" type="tns:lbeResult"/>
+</xs:sequence>
+</xs:complexType>
+<xs:simpleType name="valueOption">
+<xs:restriction base="xs:string">
+<xs:enumeration value="VALUE"/>
+<xs:enumeration value="DISPLAY"/>
+<xs:enumeration value="BOTH"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getNotice">
+    <wsdl:part element="tns:getNotice" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="logout">
+    <wsdl:part element="tns:logout" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getWorkOwnerResponse">
+    <wsdl:part element="tns:getWorkOwnerResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteResponse">
+    <wsdl:part element="tns:deleteResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="doWorkAction">
+    <wsdl:part element="tns:doWorkAction" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getNoticeResponse">
+    <wsdl:part element="tns:getNoticeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="execBizServiceResponse">
+    <wsdl:part element="tns:execBizServiceResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="create">
+    <wsdl:part element="tns:create" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="logoutResponse">
+    <wsdl:part element="tns:logoutResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryWorkflowDescribeResponse">
+    <wsdl:part element="tns:queryWorkflowDescribeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validateSessionId">
+    <wsdl:part element="tns:validateSessionId" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="execBizProcess">
+    <wsdl:part element="tns:execBizProcess" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getWorkAvailableAction">
+    <wsdl:part element="tns:getWorkAvailableAction" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validateUserResponse">
+    <wsdl:part element="tns:validateUserResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="update">
+    <wsdl:part element="tns:update" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryWorkStepDetailResponse">
+    <wsdl:part element="tns:queryWorkStepDetailResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="doWorkActionByObjectResponse">
+    <wsdl:part element="tns:doWorkActionByObjectResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="login">
+    <wsdl:part element="tns:login" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="delete">
+    <wsdl:part element="tns:delete" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryTaskListByConditionResponse">
+    <wsdl:part element="tns:queryTaskListByConditionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryTasks">
+    <wsdl:part element="tns:queryTasks" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="callBizFunctionResponse">
+    <wsdl:part element="tns:callBizFunctionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="execBizProcessResponse">
+    <wsdl:part element="tns:execBizProcessResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validateSessionIdResponse">
+    <wsdl:part element="tns:validateSessionIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validateUser">
+    <wsdl:part element="tns:validateUser" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="callBizFunction">
+    <wsdl:part element="tns:callBizFunction" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryTaskListByCondition">
+    <wsdl:part element="tns:queryTaskListByCondition" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryWorkStepDetail">
+    <wsdl:part element="tns:queryWorkStepDetail" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryWorkflowDescribe">
+    <wsdl:part element="tns:queryWorkflowDescribe" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryResponse">
+    <wsdl:part element="tns:queryResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUserInfo">
+    <wsdl:part element="tns:getUserInfo" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateResponse">
+    <wsdl:part element="tns:updateResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getWorkOwner">
+    <wsdl:part element="tns:getWorkOwner" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="doWorkActionByObject">
+    <wsdl:part element="tns:doWorkActionByObject" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="killWorkflow">
+    <wsdl:part element="tns:killWorkflow" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="claimWorkflowResponse">
+    <wsdl:part element="tns:claimWorkflowResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getWorkAvailableActionResponse">
+    <wsdl:part element="tns:getWorkAvailableActionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="loginResponse">
+    <wsdl:part element="tns:loginResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="doWorkActionResponse">
+    <wsdl:part element="tns:doWorkActionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="claimWorkflow">
+    <wsdl:part element="tns:claimWorkflow" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="query">
+    <wsdl:part element="tns:query" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createResponse">
+    <wsdl:part element="tns:createResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUserInfoResponse">
+    <wsdl:part element="tns:getUserInfoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="killWorkflowResponse">
+    <wsdl:part element="tns:killWorkflowResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="execBizService">
+    <wsdl:part element="tns:execBizService" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryTasksResponse">
+    <wsdl:part element="tns:queryTasksResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="LBEBusinessService">
+    <wsdl:operation name="getNotice">
+      <wsdl:input message="tns:getNotice" name="getNotice">
+    </wsdl:input>
+      <wsdl:output message="tns:getNoticeResponse" name="getNoticeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryTasks">
+      <wsdl:input message="tns:queryTasks" name="queryTasks">
+    </wsdl:input>
+      <wsdl:output message="tns:queryTasksResponse" name="queryTasksResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="logout">
+      <wsdl:input message="tns:logout" name="logout">
+    </wsdl:input>
+      <wsdl:output message="tns:logoutResponse" name="logoutResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validateUser">
+      <wsdl:input message="tns:validateUser" name="validateUser">
+    </wsdl:input>
+      <wsdl:output message="tns:validateUserResponse" name="validateUserResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="callBizFunction">
+      <wsdl:input message="tns:callBizFunction" name="callBizFunction">
+    </wsdl:input>
+      <wsdl:output message="tns:callBizFunctionResponse" name="callBizFunctionResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryTaskListByCondition">
+      <wsdl:input message="tns:queryTaskListByCondition" name="queryTaskListByCondition">
+    </wsdl:input>
+      <wsdl:output message="tns:queryTaskListByConditionResponse" name="queryTaskListByConditionResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryWorkStepDetail">
+      <wsdl:input message="tns:queryWorkStepDetail" name="queryWorkStepDetail">
+    </wsdl:input>
+      <wsdl:output message="tns:queryWorkStepDetailResponse" name="queryWorkStepDetailResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryWorkflowDescribe">
+      <wsdl:input message="tns:queryWorkflowDescribe" name="queryWorkflowDescribe">
+    </wsdl:input>
+      <wsdl:output message="tns:queryWorkflowDescribeResponse" name="queryWorkflowDescribeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="doWorkAction">
+      <wsdl:input message="tns:doWorkAction" name="doWorkAction">
+    </wsdl:input>
+      <wsdl:output message="tns:doWorkActionResponse" name="doWorkActionResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="create">
+      <wsdl:input message="tns:create" name="create">
+    </wsdl:input>
+      <wsdl:output message="tns:createResponse" name="createResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserInfo">
+      <wsdl:input message="tns:getUserInfo" name="getUserInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:getUserInfoResponse" name="getUserInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getWorkOwner">
+      <wsdl:input message="tns:getWorkOwner" name="getWorkOwner">
+    </wsdl:input>
+      <wsdl:output message="tns:getWorkOwnerResponse" name="getWorkOwnerResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="doWorkActionByObject">
+      <wsdl:input message="tns:doWorkActionByObject" name="doWorkActionByObject">
+    </wsdl:input>
+      <wsdl:output message="tns:doWorkActionByObjectResponse" name="doWorkActionByObjectResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="killWorkflow">
+      <wsdl:input message="tns:killWorkflow" name="killWorkflow">
+    </wsdl:input>
+      <wsdl:output message="tns:killWorkflowResponse" name="killWorkflowResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validateSessionId">
+      <wsdl:input message="tns:validateSessionId" name="validateSessionId">
+    </wsdl:input>
+      <wsdl:output message="tns:validateSessionIdResponse" name="validateSessionIdResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="execBizProcess">
+      <wsdl:input message="tns:execBizProcess" name="execBizProcess">
+    </wsdl:input>
+      <wsdl:output message="tns:execBizProcessResponse" name="execBizProcessResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="claimWorkflow">
+      <wsdl:input message="tns:claimWorkflow" name="claimWorkflow">
+    </wsdl:input>
+      <wsdl:output message="tns:claimWorkflowResponse" name="claimWorkflowResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getWorkAvailableAction">
+      <wsdl:input message="tns:getWorkAvailableAction" name="getWorkAvailableAction">
+    </wsdl:input>
+      <wsdl:output message="tns:getWorkAvailableActionResponse" name="getWorkAvailableActionResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="query">
+      <wsdl:input message="tns:query" name="query">
+    </wsdl:input>
+      <wsdl:output message="tns:queryResponse" name="queryResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="update">
+      <wsdl:input message="tns:update" name="update">
+    </wsdl:input>
+      <wsdl:output message="tns:updateResponse" name="updateResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="execBizService">
+      <wsdl:input message="tns:execBizService" name="execBizService">
+    </wsdl:input>
+      <wsdl:output message="tns:execBizServiceResponse" name="execBizServiceResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="login">
+      <wsdl:input message="tns:login" name="login">
+    </wsdl:input>
+      <wsdl:output message="tns:loginResponse" name="loginResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="delete">
+      <wsdl:input message="tns:delete" name="delete">
+    </wsdl:input>
+      <wsdl:output message="tns:deleteResponse" name="deleteResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LBEBusinessWebServiceSoapBinding" type="tns:LBEBusinessService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getNotice">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getNotice">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getNoticeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryTasks">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="queryTasks">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryTasksResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="logout">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="logout">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="logoutResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validateUser">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="validateUser">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="validateUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="callBizFunction">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="callBizFunction">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="callBizFunctionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryTaskListByCondition">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="queryTaskListByCondition">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryTaskListByConditionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryWorkStepDetail">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="queryWorkStepDetail">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryWorkStepDetailResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryWorkflowDescribe">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="queryWorkflowDescribe">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryWorkflowDescribeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="doWorkAction">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="doWorkAction">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="doWorkActionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="create">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="create">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getUserInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getUserInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getWorkOwner">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getWorkOwner">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getWorkOwnerResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="doWorkActionByObject">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="doWorkActionByObject">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="doWorkActionByObjectResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="killWorkflow">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="killWorkflow">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="killWorkflowResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validateSessionId">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="validateSessionId">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="validateSessionIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="execBizProcess">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="execBizProcess">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="execBizProcessResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="claimWorkflow">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="claimWorkflow">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="claimWorkflowResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getWorkAvailableAction">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getWorkAvailableAction">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getWorkAvailableActionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="query">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="query">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="update">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="update">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="execBizService">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="execBizService">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="execBizServiceResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="login">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="login">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="loginResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="delete">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="delete">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LBEBusinessWebService">
+    <wsdl:port binding="tns:LBEBusinessWebServiceSoapBinding" name="LBEBusinessServiceImplPort">
+      <soap:address location="http://10.69.101.178:8080/service/LBEBusiness"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
